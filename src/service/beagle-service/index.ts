@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import BeagleView from 'beagle-view'
 import { DefaultSchema } from 'beagle-tree/types'
 import Configuration from './configuration'
 import { createServices } from './services'
@@ -32,8 +31,6 @@ function createBeagleUIService<
     ...services,
     ...processedConfig,
     getConfig: () => config,
-    createView: (initialControllerId?: string) =>
-      BeagleView.create(beagleService, initialControllerId),
   }
 
   return beagleService

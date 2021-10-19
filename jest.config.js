@@ -35,6 +35,7 @@ module.exports = {
   },
   preset: 'ts-jest',
   setupFiles: ['./jest.setup.ts'],
+  setupFilesAfterEnv: ['jest-extended'],
   testEnvironment: "node",
   testMatch: [
     "**/?(*.)+(spec).ts"
@@ -42,6 +43,7 @@ module.exports = {
   moduleNameMapper: {
     '^action(.*)$': '<rootDir>/src/action$1',
     '^beagle-tree(.*)$': '<rootDir>/src/beagle-tree$1',
+    '^beagle-navigator(.*)$': '<rootDir>/src/beagle-navigator$1',
     '^beagle-view(.*)$': '<rootDir>/src/beagle-view$1',
     '^error(.*)$': '<rootDir>/src/error$1',
     '^legacy(.*)$': '<rootDir>/src/legacy$1',
