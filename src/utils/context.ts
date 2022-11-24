@@ -14,18 +14,16 @@
  * limitations under the License.
  */
 
-import array from './array'
-import convert from './convert'
-import logic from './logic'
-import number from './number'
-import other from './other'
-import string from './string'
+import Context from 'beagle-view/render/context'
+import { BeagleView } from 'beagle-view/types'
 
-export default {
-  ...array,
-  ...convert,
-  ...logic,
-  ...number,
-  ...other,
-  ...string,
+export function getTreeContextHierarchy(view: BeagleView) {
+  const extraContexts = [
+    view.getBeagleService().globalContext.getAsDataContext(),
+    ...view.getLocalContexts().getAllAsDataContext(),
+  ]
+  const hierarchy = Context.evaluate(view.getTree(), extraContexts, false)
+  return Object.keys(hierarchy)
+    .map(key => hierarchy[key])
+    .reduce((prev, cur) => [...prev, ...cur], [])
 }
